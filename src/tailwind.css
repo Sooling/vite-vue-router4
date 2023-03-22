@@ -1,0 +1,12 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer utilities {
+  .fit-height {
+    height: calc(100vh - 51.333px);
+  }
+  .z-over-tabbar {
+    z-index: 889;
+  }
+}
