@@ -35,6 +35,8 @@ const NotFound = () => import('../pages/NotFound.vue');
 const HomeHeader = () => import('../pages/Home/Header.vue');
 const HomeContent = () => import('../pages/Home/Content.vue');
 const HomeFooter = () => import('../pages/Home/Footer.vue');
+const HomeHeaderLeft = () => import('../pages/Home/Left.vue');
+const HomeHeaderRight = () => import('../pages/Home/Right.vue');
 
 const routes = [
   // 统一匹配404页面
@@ -53,6 +55,15 @@ const routes = [
           HomeContent,
           HomeFooter,
         },
+        children: [
+          {
+            path: '',
+            components: {
+              HomeHeaderLeft,
+              HomeHeaderRight,
+            },
+          },
+        ],
       },
     ],
   },
@@ -64,11 +75,26 @@ const routes = [
     component: My,
     children: [
       {
-        path: 'Setting',
+        path: 'Setting/:setId',
         component: Setting,
+        name: 'Setting',
+        query: {
+          setId: '',
+        },
         meta: {
           transition: 'slide-left',
         },
+        alias: ['Setting/'],
+      },
+      {
+        path: 'User/:setId',
+        redirect: (to) => {
+          return { path: `/My/Setting/${to.params.setId}` };
+        },
+        // name: 'User',
+        // query: {
+        //   setId: '',
+        // },
       },
     ],
   },

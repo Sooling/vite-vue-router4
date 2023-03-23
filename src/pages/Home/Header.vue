@@ -6,7 +6,13 @@ export default {};
 </script>
 
 <template>
-  <h4 class="bg-yellow-200 flex-none h-10">HomeHeader page（命名视图）</h4>
+  <div class="bg-yellow-200 flex-none h-10 text-xs">
+    HomeHeader page（命名视图）
+    <div class="flex justify-between">
+      <router-view name="HomeHeaderLeft"></router-view>
+      <router-view name="HomeHeaderRight"></router-view>
+    </div>
+  </div>
 </template>
 
 <style scoped></style>

@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 // 引入normalize.css重置样式
 import 'normalize.css';
+import './nut-theme.css';
 import './tailwind.css';
 import App from './App.vue';
 import router from './router';
