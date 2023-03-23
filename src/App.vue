@@ -17,7 +17,7 @@ const List = ref([
     icon: h(Category),
   },
   {
-    title: '寻找',
+    title: '发现',
     text: 'Find',
     icon: h(Find),
   },
@@ -42,9 +42,12 @@ const tabSwitch = (value, index) => {
 <template>
   <!-- 路由视图 -->
   <!-- v-slot API 和 Transition 的 API 添加路由页面过渡动效 -->
+
   <router-view v-slot="{ Component }">
     <transition name="fade">
-      <component :is="Component" />
+      <KeepAlive include="My,Cart">
+        <component :is="Component" />
+      </KeepAlive>
     </transition>
   </router-view>
 

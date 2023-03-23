@@ -103,6 +103,23 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  // scrollBehavior(to, from, savedPosition) {
+  //   if (to.path === '/Find') {
+  //     return new Promise((resolve, reject) => {
+  //       setTimeout(() => {
+  //         resolve({
+  //           el: document
+  //             .getElementById('find')
+  //             .getElementsByClassName('nut-list')[0],
+  //           top: -50,
+  //           behavior: 'smooth',
+  //         });
+  //       }, 300);
+  //     });
+  //   } else {
+  //     return false;
+  //   }
+  // },
 });
 
 // 根据路径的深度动态添加信息到 meta 字段
