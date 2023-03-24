@@ -1,28 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-// const pageList = [
-//   {
-//     title: '首页',
-//     text: 'Home',
-//   },
-//   {
-//     title: '分类',
-//     text: 'Category',
-//   },
-//   {
-//     title: '寻找',
-//     text: 'Find',
-//   },
-//   {
-//     title: '购物车',
-//     text: 'Cart',
-//   },
-//   {
-//     title: '我的',
-//     text: 'My',
-//   },
-// ];
-
 // 路由懒加载
 const Home = () => import('../pages/Home.vue');
 const Category = () => import('../pages/Category.vue');
@@ -37,6 +14,8 @@ const HomeContent = () => import('../pages/Home/Content.vue');
 const HomeFooter = () => import('../pages/Home/Footer.vue');
 const HomeHeaderLeft = () => import('../pages/Home/Left.vue');
 const HomeHeaderRight = () => import('../pages/Home/Right.vue');
+
+const CategorySong = () => import('../pages/Category/Song.vue');
 
 const routes = [
   // 统一匹配404页面
@@ -67,7 +46,16 @@ const routes = [
       },
     ],
   },
-  { path: '/Category', component: Category },
+  {
+    path: '/Category',
+    component: Category,
+    children: [
+      {
+        path: 'Song/:songId',
+        component: CategorySong,
+      },
+    ],
+  },
   { path: '/Find', component: Find },
   { path: '/Cart', component: Cart },
   {
@@ -91,10 +79,6 @@ const routes = [
         redirect: (to) => {
           return { path: `/My/Setting/${to.params.setId}` };
         },
-        // name: 'User',
-        // query: {
-        //   setId: '',
-        // },
       },
     ],
   },
@@ -125,6 +109,7 @@ const router = createRouter({
 // 根据路径的深度动态添加信息到 meta 字段
 // 调用afterEach时，还没有触发DOM更新，也就是说如果设置了页面过渡动画，动画还未开始
 router.afterEach((to, from) => {
+  // console.log('afterEach');
   const toDepth = to.path.split('/').length;
   const fromDepth = from.path.split('/').length;
   // console.log(to.path.split('/'), fromDepth);
