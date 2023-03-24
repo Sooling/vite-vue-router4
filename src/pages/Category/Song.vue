@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, reactive } from 'vue';
-import { useRoute, onBeforeRouteUpdate } from 'vue-router';
+import { useRoute, onBeforeRouteUpdate, onBeforeRouteLeave } from 'vue-router';
+
 // console.log('setup');
 const route = useRoute();
 
@@ -33,7 +34,15 @@ const getSongInfo = () => {
 };
 getSongInfo();
 
+// 在当前路由改变，但是该组件被复用时调用
 onBeforeRouteUpdate(getSongInfo);
+
+// 在导航离开渲染该组件的对应路由时调用
+// 可以通过返回 false 来取消导航离开
+// onBeforeRouteLeave((to, from) => {
+//   console.log('onBeforeRouteLeave');
+//   return false;
+// });
 </script>
 
 <script></script>

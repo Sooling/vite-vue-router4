@@ -8,8 +8,17 @@ const showSongPage = (songId) => {
 };
 showSongPage('01');
 </script>
+
 <script>
-export default {};
+// import { defineComponent } from 'vue';
+
+// export default defineComponent({
+//   // 在渲染该组件的对应路由被验证前调用
+//   // 如果传入第3个参数next，则next必须调用
+//   beforeRouteEnter(to, from, next) {
+//     next(false);
+//   },
+// });
 </script>
 
 <template>
