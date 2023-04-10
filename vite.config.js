@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import Components from 'unplugin-vue-components/vite';
 import NutUIResolver from '@nutui/nutui/dist/resolver';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +10,7 @@ export default defineConfig({
     vue(),
     // 开启 unplugin 插件，自动引入 NutUI 组件
     Components({
-      resolvers: [NutUIResolver()],
+      resolvers: [NutUIResolver(), ElementPlusResolver()],
     }),
   ],
   // 配置全局样式变量
