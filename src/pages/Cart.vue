@@ -14,9 +14,14 @@ const handleBlur = () => {
 };
 const eleInputRef = ref(null);
 onMounted(() => {
-  console.log(eleInputRef.value);
+  // console.log(eleInputRef.value);
   eleInputRef.value.clear();
 });
+
+// 尺寸变化的回调函数
+const handleSize = (size) => {
+  console.log(size);
+};
 </script>
 <script>
 export default {};
@@ -37,7 +42,6 @@ export default {};
     </my-input>
 
     <div class="h-8"></div>
-
     <p>二次封装Element UI的input组件</p>
     <my-ele-input
       ref="eleInputRef"
@@ -50,6 +54,10 @@ export default {};
         <span>clear</span>
       </template>
     </my-ele-input>
+
+    <div class="h-8"></div>
+    <p>自定义指令监听元素尺寸变化</p>
+    <div v-size-ob="handleSize" class="h-10 bg-blue-200"></div>
   </div>
 </template>
 
